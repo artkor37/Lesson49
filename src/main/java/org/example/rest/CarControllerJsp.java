@@ -9,22 +9,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 import java.util.List;
 
 @Controller
-public class TestController {
+public class CarControllerJsp {
     private final CarService carService;
 
-    public TestController(CarService carService) {
+    public CarControllerJsp(CarService carService) {
         this.carService = carService;
     }
 
-    //        @GetMapping("/")
-//    public Date getDateTime(){
-//        return new Date();
-//    }
-    @GetMapping("/")
-    public String startPage(Model model){
+    @GetMapping("/api/cars/table")
+    public String startPage(Model model) {
         List<Car> cars = carService.getCars();
         model.addAttribute("cars", cars);
-       return "main-page";
-
+        return "table-cars";
     }
 }

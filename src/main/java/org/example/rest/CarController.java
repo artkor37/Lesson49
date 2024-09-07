@@ -3,6 +3,8 @@ package org.example.rest;
 import org.example.rest.entity.Car;
 import org.example.rest.service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,31 +12,34 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/cars")
 public class CarController {
-    @Autowired
-    private CarService carService;
+    private final CarService carService;
 
-    @GetMapping("")
-    public List<Car> getCars() {
-        return carService.getCars();
+    public CarController(CarService carService) {
+        this.carService = carService;
     }
 
-    @GetMapping("/{id}")
-    public Car getCarById(@PathVariable Integer id) {
-        return carService.getCarById(id);
-    }
+        @GetMapping("")
+        public List<Car> getCars () {
+            return carService.getCars();
+        }
 
-    @PostMapping("")
-    public Car createCar(@RequestBody Car car) {
-        return carService.save(car);
-    }
+        @GetMapping("/{id}")
+        public Car getCarById (@PathVariable Integer id){
+            return carService.getCarById(id);
+        }
 
-    @PutMapping("")
-    public Car updateCar(@RequestBody Car car) {
-        return carService.save(car);
-    }
+        @PostMapping("")
+        public Car createCar (@RequestBody Car car){
+            return carService.save(car);
+        }
 
-    @DeleteMapping("/{id}")
-    public void deleteCar(@PathVariable Integer id) {
-        carService.delete(id);
+        @PutMapping("")
+        public Car updateCar (@RequestBody Car car){
+            return carService.save(car);
+        }
+
+        @DeleteMapping("/{id}")
+        public void deleteCar (@PathVariable Integer id){
+            carService.delete(id);
+        }
     }
-}
