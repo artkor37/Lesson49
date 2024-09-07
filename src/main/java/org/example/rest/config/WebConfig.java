@@ -1,4 +1,4 @@
-package org.example.rest;
+package org.example.rest.config;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 // этот класс замещает собой web-xml файл

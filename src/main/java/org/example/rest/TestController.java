@@ -7,8 +7,13 @@ import java.util.Date;
 
 @RestController
 public class TestController {
-        @GetMapping("/")
-    public Date getDateTime(){
-        return new Date();
+//        @GetMapping("/")
+//    public Date getDateTime(){
+//        return new Date();
+//    }
+    @GetMapping("/")
+    public String startPage(){
+       return "Hello";
+
     }
 }

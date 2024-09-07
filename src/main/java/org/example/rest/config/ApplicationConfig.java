@@ -1,4 +1,4 @@
-package org.example.rest;
+package org.example.rest.config;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 import org.springframework.context.annotation.Bean;
@@ -42,14 +42,8 @@ public class ApplicationConfig {
         sessionFactoryBean.setDataSource(dataSource());
         sessionFactoryBean.setPackagesToScan("org.example.rest");
         Properties props = new Properties();
-
-        props.put("hibernate.connection.driver_class", "com.mysql.cj.jdbc.Driver");
-        props.put("hibernate.connection.url", "jdbc:mysql://localhost:3306/test?useSSL=false");
-        props.put("hibernate.connection.username", "root");
-        props.put("hibernate.connection.password", "2563pate");
         props.put("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
         props.put("hibernate.show_sql", "true");
-        props.put("hibernate.hbm2ddl.auto", "update");
                 sessionFactoryBean.setHibernateProperties(props);
         return sessionFactoryBean;
     }
